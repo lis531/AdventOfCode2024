@@ -1,3 +1,5 @@
+import time
+start = time.time()
 with open("day5/input.txt", "r") as file:
     content = file.read()
 
@@ -12,9 +14,9 @@ for numberLine in numbersLines:
     numbers = []
     for number in numberLine.split(","):
         numbers.append(int(number))
-    for number in numbers:
-        for rules in rulesLines:
-            if int(rules.split("|")[0]) in numbers and int(rules.split("|")[1]) in numbers:
+    for rules in rulesLines:
+        if int(rules.split("|")[0]) in numbers and int(rules.split("|")[1]) in numbers:
+            for number in numbers:
                 if numbers.index(int(rules.split("|")[0])) > numbers.index(int(rules.split("|")[1])):
                     temp = numbers[numbers.index(int(rules.split("|")[0]))]
                     numbers[numbers.index(int(rules.split("|")[0]))] = numbers[numbers.index(int(rules.split("|")[1]))]
@@ -23,4 +25,6 @@ for numberLine in numbersLines:
 
     if shouldAdd:
         suma += numbers[len(numbers) // 2]
-print(suma)
+
+end = time.time()
+print(suma, (end-start) * 1000.0, "ms")
