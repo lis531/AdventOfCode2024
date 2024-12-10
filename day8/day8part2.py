@@ -26,7 +26,7 @@ with open("day8/input.txt", "r") as file:
                 else:
                     diffX = otherLetter[0] - letter[0]
                     diffY = otherLetter[1] - letter[1]
-                    for i in range(lengthX):
+                    for i in range(lengthX // diffX):
                         if letter[0] - (diffX * i) >= 0 and letter[1] - (diffY * i) < lengthX and letter[1] - (diffY * i) >= 0 and letter[0] - (diffX * i) < lengthY:
                             allLettersAndPositionsCopy[(letter[0] - (diffX * i), letter[1] - (diffY * i))] = "#"
                         if otherLetter[1] + (diffY * i) >= 0 and otherLetter[1] + (diffY * i) < lengthX and otherLetter[0] + (diffX * i) >= 0 and otherLetter[0] + (diffX * i) < lengthY:
